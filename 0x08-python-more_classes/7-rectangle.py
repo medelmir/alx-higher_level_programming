@@ -67,15 +67,7 @@ class Rectangle:
                 if i < self.__height - 1:
                     string += "\n"
             return (string)
-
-    def __print__(self):
-        """Print the rectangle with the character #."""
-        if self.__width == 0 or self.__height == 0:
-            print("")
-        else:
-            for i in range(self.__height):
-                print("#" * self.__width)
-
+            
     def __repr__(self):
         """Return the string representation of the Rectangle."""
         rect = "Rectangle(" + str(self.__width)
