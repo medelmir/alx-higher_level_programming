@@ -83,8 +83,8 @@ class Rectangle(Base):
         y = f"{self.__width}/{self.__height}"
         return x + y
 
-    def update(self, *args):
-        """assigns an arguemnt to each attribute"""
+    """def update(self, *args):
+        assigns an arguemnt to each attribute
         for i in range((len(args))):
             if i == 0:
                 self.id = args[i]
@@ -95,4 +95,13 @@ class Rectangle(Base):
             elif i == 3:
                 self.x = args[i]
             elif i == 4:
-                self.y = args[i]
+                self.y = args[i]"""
+    def update(self, *args, **kwargs):
+        """assigns an argument to each attribute"""
+        if args:
+            attrs = ["id", "width", "height", "x", "y"]
+            for i in range(len(args)):
+                setattr(self, attrs[i], args[i])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
