@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Defines a base model class."""
 import json
+import turtle
+import random
 
 
 class Base:
@@ -83,3 +85,39 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw Rectangles and Squares using turtle"""
+
+        turtle.title("Squares and Rectangles")
+        turtle.bgcolor("black")
+        turtle.hideturtle()
+        turtle.speed(0)
+        turtle.pensize(3)
+
+        colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+
+        for r in list_rectangles:
+            turtle.color(random.choice(colors))
+            turtle.penup()
+            turtle.goto(r.x, r.y)
+            turtle.pendown()
+            for i in range(2):
+                turtle.forward(r.width)
+                turtle.left(90)
+                turtle.forward(r.height)
+                turtle.left(90)
+
+        for s in list_squares:
+            turtle.color(random.choice(colors))
+            turtle.penup()
+            turtle.goto(s.x, s.y)
+            turtle.pendown()
+            for i in range(2):
+                turtle.forward(s.width)
+                turtle.left(90)
+                turtle.forward(s.height)
+                turtle.left(90)
+
+        turtle.exitonclick()
